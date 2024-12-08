@@ -184,7 +184,7 @@ function select() {
     if ($filterfield == "codigoTarefa") {
         echo "selected";
     }
-    ?>><?php echo htmlspecialchars("Código") ?></option>
+    ?>><?php echo htmlspecialchars("Codigo") ?></option>
                         <option value="<?php echo "lp_codigoTarefaStatus" ?>"<?php
                             if ($filterfield == "lp_codigoTarefaStatus") {
                                 echo "selected";
@@ -365,11 +365,11 @@ function showrow($row, $recid) {
             </td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Data de Início") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Data de Inï¿½cio") . "&nbsp;" ?></td>
             <td class="dr"><input type="text" name="dataInicio" value="<?php echo str_replace('"', '&quot;', trim($row["dataInicio"])) ?>"></td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Hora de Início") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Hora de Inï¿½cio") . "&nbsp;" ?></td>
             <td class="dr"><input type="text" name="horaInicial" value="<?php echo str_replace('"', '&quot;', trim($row["horaInicial"])) ?>"></td>
         </tr>
         <tr>
@@ -381,11 +381,11 @@ function showrow($row, $recid) {
             <td class="dr"><input type="text" name="horaLimite" value="<?php echo str_replace('"', '&quot;', trim($row["horaLimite"])) ?>"></td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Título") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Tï¿½tulo") . "&nbsp;" ?></td>
             <td class="dr"><input type="text" name="titulo" value="<?php echo str_replace('"', '&quot;', trim($row["titulo"])) ?>"></td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Descrição") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Descriï¿½ï¿½o") . "&nbsp;" ?></td>
             <td class="dr"><input type="text" name="descricao" maxlength="50" value="<?php echo str_replace('"', '&quot;', trim($row["descricao"])) ?>"></td>
         </tr>
         <tr>
@@ -453,7 +453,7 @@ function showrow($row, $recid) {
     }
     ?>
     <?php if ($page < $pagecount) { ?>
-                <td>&nbsp;<a href="tarefa.php?page=<?php echo $page + 1 ?>">Próximo&nbsp;&gt;&gt;</a>&nbsp;</td>
+                <td>&nbsp;<a href="tarefa.php?page=<?php echo $page + 1 ?>">Prï¿½ximo&nbsp;&gt;&gt;</a>&nbsp;</td>
     <?php } ?>
         </tr>
     </table>
@@ -469,7 +469,7 @@ function showrecnav($a, $recid, $count) {
         <?php if ($recid > 0) { ?>
                 <td><a href="tarefa.php?a=<?php echo $a ?>&recid=<?php echo $recid - 1 ?>">Registro Anterior</a></td>
         <?php } if ($recid < $count - 1) { ?>
-                <td><a href="tarefa.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Próximo Registro</a></td>
+                <td><a href="tarefa.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Prï¿½ximo Registro</a></td>
         <?php } ?>
         </tr>
     </table>

@@ -1,7 +1,7 @@
 <?php
 
 function connect() {
-    $conn = mysqli_connect("127.0.0.1", "root", "root");
+    $conn = mysqli_connect("127.0.0.1", "admin", "root");
     mysqli_select_db($conn, "agendars");
     return $conn;
 }

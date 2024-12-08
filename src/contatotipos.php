@@ -164,7 +164,7 @@ function select() {
     }
     $startrec = $showrecs * ($page - 1);
     if ($startrec < $count) {
-        mysql_data_seek($res, $startrec);
+        mysqli_data_seek($res, $startrec);
     }
     $reccount = min($showrecs * $page, $count);
     ?>
@@ -213,7 +213,7 @@ function select() {
         </tr>
         <?php
         for ($i = $startrec; $i < $reccount; $i++) {
-            $row = mysql_fetch_assoc($res);
+            $row = mysqli_fetch_assoc($res);
             $style = "dr";
             if ($i % 2 != 0) {
                 $style = "sr";
@@ -262,9 +262,9 @@ function showroweditor($row, $iseditmode) {
             <td class="dr"><select name="codigoContato">
                     <?php
                     $sql = "select `codigoContato`, `nome` from `contato`";
-                    $res = mysql_query($sql, $conn) or die(mysql_error());
+                    $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
-                    while ($lp_row = mysql_fetch_assoc($res)) {
+                    while ($lp_row = mysqli_fetch_assoc($res)) {
                         $val = $lp_row["codigoContato"];
                         $caption = $lp_row["nome"];
                         if ($row["codigoContato"] == $val) {
@@ -281,9 +281,9 @@ function showroweditor($row, $iseditmode) {
             <td class="dr"><select name="codigoTipoContato">
                     <?php
                     $sql = "select `codigoTipoContato`, `descricao` from `tipocontato`";
-                    $res = mysql_query($sql, $conn) or die(mysql_error());
+                    $res = mysqli_query($conn, $sql) or die(mysqli_error());
 
-                    while ($lp_row = mysql_fetch_assoc($res)) {
+                    while ($lp_row = mysqli_fetch_assoc($res)) {
                         $val = $lp_row["codigoTipoContato"];
                         $caption = $lp_row["descricao"];
                         if ($row["codigoTipoContato"] == $val) {
@@ -353,7 +353,7 @@ function showrecnav($a, $recid, $count) {
     ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="contatotipos.php">P�gina Inicial</a></td>
+            <td><a href="contatotipos.php">Pagina Inicial</a></td>
             <?php if ($recid > 0) { ?>
                 <td><a href="contatotipos.php?a=<?php echo $a ?>&recid=<?php echo $recid - 1 ?>">Registro Anterior</a></td>
             <?php } if ($recid < $count - 1) { ?>
@@ -370,7 +370,7 @@ function addrec() {
     ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="contatotipos.php">P�gina Inicial</a></td>
+            <td><a href="contatotipos.php">Pagina Inicial</a></td>
         </tr>
     </table>
     <hr size="1" noshade>
@@ -510,7 +510,7 @@ function sql_insert() {
     global $_POST;
 
     $sql = "insert into `contatotipos` (`codigoContato`, `codigoTipoContato`) values (" . sqlvalue(@$_POST["codigoContato"], false) . ", " . sqlvalue(@$_POST["codigoTipoContato"], false) . ")";
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysql_error());
 }
 
 function sql_update() {
@@ -518,14 +518,14 @@ function sql_update() {
     global $_POST;
 
     $sql = "update `contatotipos` set `codigoContato`=" . sqlvalue(@$_POST["codigoContato"], false) . ", `codigoTipoContato`=" . sqlvalue(@$_POST["codigoTipoContato"], false) . " where " . primarykeycondition();
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysql_error());
 }
 
 function sql_delete() {
     global $conn;
 
     $sql = "delete from `contatotipos` where " . primarykeycondition();
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysql_error());
 }
 
 function primarykeycondition() {

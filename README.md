@@ -1,6 +1,6 @@
 # agendars-php
 
-## Executando locamente
+## Executando localmente
 
 ```shell
 cd src
